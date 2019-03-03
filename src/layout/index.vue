@@ -1,12 +1,12 @@
 <template>
   <el-container>
-    <el-header height="50px">
-      <tofu-header></tofu-header>
-    </el-header>
+    <el-aside width="auto">
+      <tofu-sidebar></tofu-sidebar>
+    </el-aside>
     <el-container>
-      <el-aside width="auto">
-        <tofu-sidebar></tofu-sidebar>
-      </el-aside>
+      <el-header height="50px">
+        <tofu-header></tofu-header>
+      </el-header>
       <el-main>
         <router-view/>
       </el-main>

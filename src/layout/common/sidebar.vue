@@ -11,7 +11,7 @@
         <template v-if="item.subs">
           <el-submenu :index="item.index" :key="item.index">
             <template slot="title">
-              <i :class="item.icon"></i>
+              <i class="iconfont" :class="item.icon"></i>
               <span slot="title">{{ item.title }}</span>
             </template>
             <template v-for="subItem in item.subs">
@@ -29,7 +29,7 @@
         </template>
         <template v-else>
           <el-menu-item :index="item.index" :key="item.index">
-            <i :class="item.icon"></i>
+            <i class="iconfont" :class="item.icon"></i>
             <span slot="title">{{ item.title }}</span>
           </el-menu-item>
         </template>
@@ -48,14 +48,19 @@ export default {
       collapse: false,
       menus: [
         {
-          icon: 'el-icon-tickets',
+          icon: 'iconicon_work_fill',
           index: '1',
           title: '系统首页'
         },
         {
-          icon: 'el-icon-tickets',
+          icon: 'iconicon_memo',
+          index: 'driver',
+          title: '引导页'
+        },
+        {
+          icon: 'iconword',
           index: '2',
-          title: '文章系统',
+          title: '文章功能',
           subs: [
             {
               index: 'form',
@@ -63,82 +68,48 @@ export default {
             },
             {
               index: 'editor',
-              title: '发布文章'
+              title: '创建文章'
             }
           ]
         },
         {
-          icon: 'el-icon-service',
+          icon: 'iconexcel',
           index: '3',
-          title: '服务专员',
+          title: 'Excel 功能',
           subs: [
             {
-              index: '3-1',
-              title: '文章列表'
+              index: 'form',
+              title: 'Excel 导出'
             },
             {
-              index: '3-2',
-              title: '发布文章'
+              index: 'editor',
+              title: 'Excel 导入'
             }
           ]
         },
         {
-          icon: 'el-icon-goods',
+          icon: 'iconpdf',
           index: '4',
-          title: '积分商品',
+          title: 'PDF 功能',
           subs: [
             {
-              index: '4-1',
-              title: '商品列表'
+              index: 'form',
+              title: 'Excel 导出'
             },
             {
-              index: '4-2',
-              title: '发布新品'
+              index: 'editor',
+              title: 'Excel 导入'
             }
           ]
         },
         {
-          icon: 'el-icon-goods',
+          icon: 'iconsvgmoban12',
           index: '5',
-          title: '汽车产品',
+          title: '权限功能',
           subs: [
             {
-              index: '5-1',
-              title: '产品列表'
-            },
-            {
-              index: '5-2',
-              title: '发布新品'
-            }
-          ]
-        },
-        {
-          icon: 'el-icon-edit-outline',
-          index: '6',
-          title: '用户预约',
-          subs: [
-            {
-              index: '6-1',
-              title: '维修预约'
-            },
-            {
-              index: '6-2',
-              title: '试驾预约'
-            },
-            {
-              index: '6-3',
-              title: '保养预约'
-            }
-          ]
-        },
-        {
-          icon: 'el-icon-service',
-          index: '7',
-          title: '用户中心',
-          subs: [
-            {
-              index: '7-1',
-              title: '用户列表'
+              index: 'form',
+              title: '设置权限'
             }
           ]
         }
@@ -174,8 +145,11 @@ export default {
     height: 100%;
   }
   .tofu-sidebar {
+    .iconfont {
+      margin-right: 6px;
+    }
     &:not(.el-menu--collapse) {
-      width: 250px;
+      width: 220px;
     }
   }
 }

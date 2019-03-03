@@ -1,23 +1,59 @@
 <template>
-  <div class="tofu-header ">
+  <div class="tofu-header tofu-border-bottom">
     <div class="lt">
-      <!-- <transition-group name="el-zoom-in-top"> -->
-        <!-- 展开时的logo -->
-        <div class="tofu-sidebar-logo--open tofu-border-right tofu-border-bottom" v-if="!collapse" @click="no_toggle_sidebar()" key="open">
-          <div class="inner">
-            <div class="lt"><img src="../../assets/logo.jpg" alt="logo" class="tofu-img"></div>
-            <div class="rt">vue-tofu-admin</div>
-          </div>
+      <!-- 展开时的logo -->
+      <!-- <div class="tofu-sidebar-logo--open " v-if="!collapse" @click="no_toggle_sidebar()" key="open">
+        <div class="inner">
+          <div class="lt"><img src="../../assets/logo.jpg" alt="logo" class="tofu-img"></div>
+          <div class="rt">vue-tofu-admin</div>
         </div>
-        <!-- 收缩时的logo -->
-        <div class="tofu-sidebar-logo--close tofu-border-right tofu-border-bottom" v-if="collapse" @click="no_toggle_sidebar()" key="close">
-          <div class="inner">
-            <img src="../../assets/logo.jpg" alt="logo" class="tofu-img">
-          </div>
+      </div> -->
+      <!-- 收缩时的logo -->
+      <div class="tofu-sidebar-logo--close " @click="no_toggle_sidebar()" key="close">
+        <div class="inner">
+          <img src="../../assets/logo.jpg" alt="logo" class="tofu-img">
         </div>
-      <!-- </transition-group> -->
+      </div>
     </div>
-    <div class="rt tofu-border-bottom"></div>
+    <div class="ct">
+      <!-- 面包屑 -->
+      <el-breadcrumb separator="/">
+        <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+        <el-breadcrumb-item :to="{ path: '/' }">活动列表</el-breadcrumb-item>
+        <el-breadcrumb-item>活动详情</el-breadcrumb-item>
+      </el-breadcrumb>
+    </div>
+    <div class="rt">
+      <div class="item">
+        <el-tooltip effect="dark" content="全屏" placement="bottom">
+          <i class="iconfont iconquanping"></i>
+        </el-tooltip>
+      </div>
+      <div class="item">
+        <el-tooltip effect="dark" content="语言" placement="bottom">
+          <i class="iconfont iconyuyan1"></i>
+        </el-tooltip>
+      </div>
+      <div class="item">
+        <el-tooltip effect="dark" content="换肤" placement="bottom">
+          <el-color-picker v-model="theme" size="small"></el-color-picker>
+        </el-tooltip>
+      </div>
+      <div class="item">
+        <el-dropdown style="vertical-align: top;">
+          <div class="avatar-wrap">
+            <div class="avatar">
+              <img src="../../assets/avatar.png" alt="avatar" class="tofu-img">
+            </div>
+            <div class="user-name">Admin</div>
+          </div>
+          <el-dropdown-menu slot="dropdown">
+            <el-dropdown-item>个人中心</el-dropdown-item>
+            <el-dropdown-item>账号管理</el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -28,7 +64,8 @@ export default {
   name: 'tofu-header',
   data () {
     return {
-      collapse: false
+      collapse: false,
+      theme: '#CBCBCB'
     }
   },
   methods: {
@@ -45,8 +82,9 @@ export default {
   height: 100%;
   box-sizing: border-box;
   display: flex;
-  .lt {
+  & > .lt {
     min-width: 1px;
+    padding: 0 10px;
     .tofu-sidebar-logo {
       &--open, &--close {
         height: 100%;
@@ -84,8 +122,41 @@ export default {
       }
     }
   }
-  .rt {
+  & > .ct {
+    min-width: 1px;
+    display: flex;
+    align-items: center;
+  }
+  & > .rt {
     flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 20px;
+    .item {
+      margin-left: 30px;
+    }
+    .iconfont {
+      font-size: 22px;
+      font-weight: bold;
+      cursor: pointer;
+      &.iconyuyan1 {
+        font-size: 24px;
+      }
+    }
+    .avatar-wrap {
+      display: flex;
+      align-items: center;
+      .avatar {
+        width: 40px;
+        height: 40px;
+      }
+      .user-name {
+        margin-left: 8px;
+        font-size: 16px;
+        font-weight: bold;
+      }
+    }
   }
 }
 </style>
