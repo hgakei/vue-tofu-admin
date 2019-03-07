@@ -1,6 +1,6 @@
 <template>
   <div>
-    Dashboard
+    excel-export
   </div>
 </template>
 

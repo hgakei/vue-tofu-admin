@@ -1,6 +1,6 @@
 <template>
   <div>
-    Dashboard
+    article-create
   </div>
 </template>
 

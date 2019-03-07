@@ -1,6 +1,6 @@
 <template>
   <div>
-    Dashboard
+    Driver
   </div>
 </template>
 

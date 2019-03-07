@@ -1,6 +1,6 @@
 <template>
   <div>
-    Dashboard
+    pdf
   </div>
 </template>
 

@@ -49,7 +49,7 @@ export default {
       menus: [
         {
           icon: 'iconicon_work_fill',
-          index: '1',
+          index: 'dashboard',
           title: '系统首页'
         },
         {
@@ -59,56 +59,46 @@ export default {
         },
         {
           icon: 'iconword',
-          index: '2',
+          index: 'article',
           title: '文章功能',
           subs: [
             {
-              index: 'form',
+              index: 'article-list',
               title: '文章列表'
             },
             {
-              index: 'editor',
+              index: 'article-create',
               title: '创建文章'
             }
           ]
         },
         {
           icon: 'iconexcel',
-          index: '3',
+          index: 'excel',
           title: 'Excel 功能',
           subs: [
             {
-              index: 'form',
+              index: 'excel-export',
               title: 'Excel 导出'
             },
             {
-              index: 'editor',
+              index: 'excel-import',
               title: 'Excel 导入'
             }
           ]
         },
         {
           icon: 'iconpdf',
-          index: '4',
-          title: 'PDF 功能',
-          subs: [
-            {
-              index: 'form',
-              title: 'Excel 导出'
-            },
-            {
-              index: 'editor',
-              title: 'Excel 导入'
-            }
-          ]
+          index: 'pdf',
+          title: 'PDF 功能'
         },
         {
           icon: 'iconsvgmoban12',
-          index: '5',
+          index: 'permission',
           title: '权限功能',
           subs: [
             {
-              index: 'form',
+              index: 'permission-create',
               title: '设置权限'
             }
           ]
@@ -118,7 +108,7 @@ export default {
   },
   computed: {
     onRoutes () {
-      return this.$route.path.replace('/', '')
+      return this.$route.name
     }
   },
   methods: {
