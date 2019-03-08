@@ -7,7 +7,7 @@ import 'normalize.css/normalize.css'
 import '@/scss/index.scss' // global css
 
 import ElementUI from 'element-ui'
-import 'element-ui/lib/theme-chalk/index.css'
+import '@/scss/element-variables.scss';
 
 Vue.use(ElementUI)
 

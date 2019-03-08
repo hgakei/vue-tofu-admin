@@ -7,23 +7,33 @@
       <el-header height="50px">
         <tofu-header></tofu-header>
       </el-header>
+      <tofu-tag></tofu-tag>
       <el-main>
-        <router-view/>
+        <keep-alive :include="tagsList">
+          <router-view/>
+        </keep-alive>
       </el-main>
     </el-container>
   </el-container>
 </template>
 
 <script>
-import tofuHeader from './common/header'
-import tofuSidebar from './common/sidebar'
+import tofuHeader from './common/tofu-header'
+import tofuSidebar from './common/tofu-sidebar'
+import tofuTag from './common/tofu-tag'
 import bus from '@/utils/bus.js'
 
 export default {
   name: 'layout',
+  data () {
+    return {
+      tagsList: []
+    }
+  },
   components: {
     tofuHeader,
-    tofuSidebar
+    tofuSidebar,
+    tofuTag
   },
   methods: {
     Get_breadcrumbList () {
