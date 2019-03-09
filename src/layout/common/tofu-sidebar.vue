@@ -9,13 +9,13 @@
     >
       <template v-for="item in menus">
         <template v-if="item.subs">
-          <el-submenu :index="item.index" :key="item.index">
+          <el-submenu :index="item.index" :key="item.index" :show-timeout="Timeout" :hide-timeout="Timeout">
             <template slot="title">
               <i class="iconfont" :class="item.icon"></i>
               <span slot="title">{{ item.title }}</span>
             </template>
             <template v-for="subItem in item.subs">
-              <el-submenu v-if="subItem.subs" :index="subItem.index" :key="subItem.index">
+              <el-submenu v-if="subItem.subs" :index="subItem.index" :key="subItem.index" :show-timeout="Timeout" :hide-timeout="Timeout">
                 <template slot="title">{{ subItem.title }}</template>
                 <el-menu-item
                   v-for="(threeItem,i) in subItem.subs"
@@ -44,6 +44,7 @@ export default {
   props: ['collapse'],
   data () {
     return {
+      Timeout: 150,
       menus: [
         {
           icon: 'iconicon_work_fill',
@@ -131,11 +132,26 @@ export default {
     height: 100%;
   }
   .tofu-sidebar {
-    .iconfont {
-      margin-right: 6px;
-    }
+    // 展开状态
     &:not(.el-menu--collapse) {
       width: 220px;
+      .iconfont {
+        margin-right: 6px;
+      }
+    }
+    // 收缩状态
+    &.el-menu--collapse {
+      .el-menu-item {
+        text-align: center;
+      }
+      .el-submenu{
+        text-align: center;
+        &.is-active{
+          .iconfont {
+            color: $clr-theme-6;
+          }
+        }
+      }
     }
   }
 }

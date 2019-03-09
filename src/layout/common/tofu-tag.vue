@@ -79,6 +79,7 @@ export default {
       color: #fff;
       background-color: $clr-theme-6;
       border-color: $clr-theme-6;
+      padding-right: 5px;
       .iconfont {
         display: inline;
         margin-left: 4px;
