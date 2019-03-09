@@ -7,6 +7,14 @@
       unique-opened
       router
     >
+      <el-menu-item class="el-menu-sign">
+        <a href="https://github.com/hgakei/vue-tofu-admin" target="_blank" style="display: block;" class="tofu-clr-black">
+          <div class="sign-logo">
+            <img src="../../assets/logo.jpg" alt="logo" class="tofu-img">
+          </div>
+          <span slot="title" class="sign-name">vue-tofu-admin</span>
+        </a>
+      </el-menu-item>
       <template v-for="item in menus">
         <template v-if="item.subs">
           <el-submenu :index="item.index" :key="item.index" :show-timeout="Timeout" :hide-timeout="Timeout">
@@ -151,6 +159,39 @@ export default {
             color: $clr-theme-6;
           }
         }
+      }
+    }
+  }
+}
+// 导航菜单顶部logo
+.tofu-sidebar {
+  // 通用样式
+  .el-menu-sign {
+    .sign-logo {
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+    }
+    .sign-name {
+      font-size: 16px;
+      font-weight: bold;
+    }
+  }
+  // 展开状态
+  &:not(.el-menu--collapse) {
+    .el-menu-sign {
+      padding-left: 10px !important;
+      .sign-logo {
+        margin-right: 6px;
+      }
+    }
+  }
+  // 收缩状态
+  &.el-menu--collapse {
+    .el-menu-sign {
+      padding: 0 !important;
+      .el-tooltip {
+        padding: 0 !important;
       }
     }
   }

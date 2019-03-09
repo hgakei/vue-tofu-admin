@@ -40,7 +40,23 @@
     box-shadow:2px 2px 5px $clr-border;
   }
 }
+// 旋转
+.tofu-rotate {
+  &_90 {
+    transform: rotate(90deg);
+  }
+  &_180 {
+    transform: rotate(180deg);
+  }
+  &_-90 {
+    transform: rotate(-90deg);
+  }
+  &_-180 {
+    transform: rotate(-180deg);
+  }
+}
 
+// 颜色
 .tofu-clr-theme {
   color: $clr-theme-6;
   &--bg {
@@ -51,6 +67,12 @@
   color: $clr-white;
   &--bg {
     background-color: $clr-white;
+  }
+}
+.tofu-clr-black {
+  color: $clr-black;
+  &--bg {
+    background-color: $clr-black;
   }
 }
 .tofu-clr-blue {
