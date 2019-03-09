@@ -1,15 +1,15 @@
 <template>
-  <div class="tofu-header tofu-border-bottom">
+  <div class="tofu-header tofu-border--bottom">
     <div class="lt">
       <!-- 展开时的logo -->
-      <!-- <div class="tofu-sidebar-logo--open " v-if="!collapse" @click="no_toggle_sidebar()" key="open">
+      <!-- <div class="tofu-sidebar-logo--open " v-if="!collapse" @click="On_toggle_sidebar()" key="open">
         <div class="inner">
           <div class="lt"><img src="../../assets/logo.jpg" alt="logo" class="tofu-img"></div>
           <div class="rt">vue-tofu-admin</div>
         </div>
       </div> -->
       <!-- 收缩时的logo -->
-      <div class="tofu-sidebar-logo--close " @click="no_toggle_sidebar()" key="close">
+      <div class="tofu-sidebar-logo--close " @click="On_toggle_sidebar()" key="close">
         <div class="inner">
           <img src="../../assets/logo.jpg" alt="logo" class="tofu-img">
         </div>
@@ -19,14 +19,14 @@
       <!-- 面包屑 -->
       <el-breadcrumb separator="/">
         <!-- <transition-group name="breadcrumb" mode="in-out"> -->
-          <el-breadcrumb-item v-for="item in breadcrumbList" :key="item.name" :to="{ name: item.name }">{{item.label}}</el-breadcrumb-item>
+          <el-breadcrumb-item v-for="item in breadcrumbList" :key="item.path" :to="{ path: item.path }">{{item.label}}</el-breadcrumb-item>
         <!-- </transition-group> -->
       </el-breadcrumb>
     </div>
     <div class="rt">
       <div class="item">
-        <el-tooltip effect="dark" content="全屏" placement="bottom">
-          <i class="iconfont iconquanping"></i>
+        <el-tooltip effect="dark" :content="fullscreen?'取消全屏':'全屏'" placement="bottom">
+          <i class="iconfont iconquanping" @click="On_handleFullScreen()"></i>
         </el-tooltip>
       </div>
       <div class="item">
@@ -65,6 +65,7 @@ export default {
   data () {
     return {
       collapse: false,
+      fullscreen: false,
       theme: '#CBCBCB'
     }
   },
@@ -74,9 +75,36 @@ export default {
     }
   },
   methods: {
-    no_toggle_sidebar () {
+    On_toggle_sidebar () {
       this.collapse = !this.collapse
       bus.$emit('toggle-sidebar', this.collapse)
+    },
+    // 全屏事件
+    On_handleFullScreen () {
+      let element = document.documentElement
+      if (this.fullscreen) {
+        if (document.exitFullscreen) {
+          document.exitFullscreen()
+        } else if (document.webkitCancelFullScreen) {
+          document.webkitCancelFullScreen()
+        } else if (document.mozCancelFullScreen) {
+          document.mozCancelFullScreen()
+        } else if (document.msExitFullscreen) {
+          document.msExitFullscreen()
+        }
+      } else {
+        if (element.requestFullscreen) {
+          element.requestFullscreen()
+        } else if (element.webkitRequestFullScreen) {
+          element.webkitRequestFullScreen()
+        } else if (element.mozRequestFullScreen) {
+          element.mozRequestFullScreen()
+        } else if (element.msRequestFullscreen) {
+          // IE11
+          element.msRequestFullscreen()
+        }
+      }
+      this.fullscreen = !this.fullscreen
     }
   }
 }

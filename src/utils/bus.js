@@ -6,8 +6,8 @@ const bus = new Vue({
     return {
       breadcrumbList: [
         {
-          label: '系统首页',
-          name: 'dashboard'
+          label: '首页',
+          path: '/'
         }
       ]
     }

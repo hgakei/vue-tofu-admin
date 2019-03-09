@@ -1,6 +1,8 @@
 #app, html, body{
+  min-width: 1200px;
   height: 100%;
   font-size: 14px;
+  font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Arial,sans-serif;
 }
 
 .tofu-img {
@@ -10,11 +12,68 @@
   object-fit: contain;
 }
 
+.tofu-split {
+  height: 20px;
+}
+
 .tofu-border {
-  &-right {
-    border-right: solid 1px $clr-border;
+  border: 1px solid $clr-border;
+  &--right {
+    border-right: 1px solid $clr-border;
   }
-  &-bottom {
-    border-bottom: solid 1px $clr-border;
+  &--bottom {
+    border-bottom: 1px solid $clr-border;
+  }
+  &-radius {
+    &--4 {
+      border-radius: 4px;
+    }
+    &--8 {
+      border-radius: 8px;
+    }
+  }
+}
+
+.tofu-shadow {
+  box-shadow:0px 0px 9px $clr-border;
+  &--bottom {
+    box-shadow:2px 2px 5px $clr-border;
+  }
+}
+
+.tofu-clr-theme {
+  color: $clr-theme-6;
+  &--bg {
+    background-color: $clr-theme-6;
+  }
+}
+.tofu-clr-white {
+  color: $clr-white;
+  &--bg {
+    background-color: $clr-white;
+  }
+}
+.tofu-clr-blue {
+  color: $clr-blue;
+  &--bg {
+    background-color: $clr-blue;
+  }
+}
+.tofu-clr-org {
+  color: $clr-org;
+  &--bg {
+    background-color: $clr-org;
+  }
+}
+.tofu-clr-red {
+  color: $clr-red;
+  &--bg {
+    background-color: $clr-red;
+  }
+}
+.tofu-clr-green {
+  color: $clr-green;
+  &--bg {
+    background-color: $clr-green;
   }
 }

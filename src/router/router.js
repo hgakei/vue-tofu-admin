@@ -14,13 +14,14 @@ export default new Router({
     {
       path: '/main',
       component: () => import('@/layout/index.vue'),
-      meta: { title: '系统首页' },
+      meta: { title: '首页' },
+      redirect: '/main/dashboard',
       children: [
         {
           path: '/main/dashboard',
           name: 'dashboard',
           component: resolve => require(['@/views/dashboard/index.vue'], resolve),
-          meta: { title: '系统首页' }
+          meta: { title: '数据中心' }
         },
         {
           path: '/main/driver',

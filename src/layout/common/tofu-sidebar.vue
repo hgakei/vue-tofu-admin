@@ -39,18 +39,16 @@
 </template>
 
 <script>
-import bus from '@/utils/bus.js'
-
 export default {
   name: 'tofu-sidebar',
+  props: ['collapse'],
   data () {
     return {
-      collapse: false,
       menus: [
         {
           icon: 'iconicon_work_fill',
           index: 'dashboard',
-          title: '系统首页'
+          title: '数据中心'
         },
         {
           icon: 'iconicon_memo',
@@ -113,11 +111,6 @@ export default {
   },
   methods: {
     // ...
-  },
-  mounted () {
-    bus.$on('toggle-sidebar', collapse => {
-      this.collapse = collapse
-    })
   }
 }
 </script>
@@ -126,7 +119,10 @@ export default {
 @import "~@/scss/var.scss";
 
 .tofu-sidebar-wrap {
-  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
   overflow-y: scroll;
   &::-webkit-scrollbar {
     width: 0;

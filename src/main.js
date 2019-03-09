@@ -3,11 +3,11 @@ import App from './App.vue'
 import router from './router/router'
 import store from './store/store'
 
-import 'normalize.css/normalize.css'
+// import 'normalize.css/normalize.css'
 import '@/scss/index.scss' // global css
 
 import ElementUI from 'element-ui'
-import '@/scss/element-variables.scss';
+import '@/scss/element-variables.scss'
 
 Vue.use(ElementUI)
 
