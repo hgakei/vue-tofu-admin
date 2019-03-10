@@ -1,5 +1,5 @@
 <template>
-  <div class="tofu-sidebar-wrap">
+  <div class="tofu-sidebar-wrap tofu-clr-white--bg">
     <el-menu
       class="tofu-sidebar"
       :default-active="onRoutes"
@@ -20,25 +20,25 @@
           <el-submenu :index="item.index" :key="item.index" :show-timeout="Timeout" :hide-timeout="Timeout">
             <template slot="title">
               <i class="iconfont" :class="item.icon"></i>
-              <span slot="title">{{ item.title }}</span>
+              <span slot="title">{{ generateLang(item.title) }}</span>
             </template>
             <template v-for="subItem in item.subs">
               <el-submenu v-if="subItem.subs" :index="subItem.index" :key="subItem.index" :show-timeout="Timeout" :hide-timeout="Timeout">
-                <template slot="title">{{ subItem.title }}</template>
+                <template slot="title">{{ generateLang(subItem.title) }}</template>
                 <el-menu-item
                   v-for="(threeItem,i) in subItem.subs"
                   :key="i"
                   :index="threeItem.index"
-                >{{ threeItem.title }}</el-menu-item>
+                >{{ generateLang(threeItem.title) }}</el-menu-item>
               </el-submenu>
-              <el-menu-item v-else :index="subItem.index" :key="subItem.index">{{ subItem.title }}</el-menu-item>
+              <el-menu-item v-else :index="subItem.index" :key="subItem.index">{{ generateLang(subItem.title) }}</el-menu-item>
             </template>
           </el-submenu>
         </template>
         <template v-else>
           <el-menu-item :index="item.index" :key="item.index">
             <i class="iconfont" :class="item.icon"></i>
-            <span slot="title">{{ item.title }}</span>
+            <span slot="title">{{ generateLang(item.title) }}</span>
           </el-menu-item>
         </template>
       </template>
@@ -47,6 +47,8 @@
 </template>
 
 <script>
+import { generateLang } from '@/utils/i18n'
+
 export default {
   name: 'tofu-sidebar',
   props: ['collapse'],
@@ -57,56 +59,56 @@ export default {
         {
           icon: 'iconicon_work_fill',
           index: 'dashboard',
-          title: '数据中心'
+          title: 'route.dashboard'
         },
         {
           icon: 'iconicon_memo',
           index: 'driver',
-          title: '引导页'
+          title: 'route.driver'
         },
         {
           icon: 'iconword',
           index: 'article',
-          title: '文章功能',
+          title: 'route.article',
           subs: [
             {
               index: 'article-list',
-              title: '文章列表'
+              title: 'route.articleList'
             },
             {
               index: 'article-create',
-              title: '创建文章'
+              title: 'route.articleCreate'
             }
           ]
         },
         {
           icon: 'iconexcel',
           index: 'excel',
-          title: 'Excel 功能',
+          title: 'route.excel',
           subs: [
             {
               index: 'excel-export',
-              title: 'Excel 导出'
+              title: 'route.excelImport'
             },
             {
               index: 'excel-import',
-              title: 'Excel 导入'
+              title: 'route.excelExport'
             }
           ]
         },
         {
           icon: 'iconpdf',
           index: 'pdf',
-          title: 'PDF 功能'
+          title: 'route.pdf'
         },
         {
           icon: 'iconsvgmoban12',
           index: 'permission',
-          title: '权限功能',
+          title: 'route.permission',
           subs: [
             {
               index: 'permission-create',
-              title: '设置权限'
+              title: 'route.permissionCreate'
             }
           ]
         }
@@ -119,6 +121,7 @@ export default {
     }
   },
   methods: {
+    generateLang
     // ...
   }
 }

@@ -1,10 +1,16 @@
-/*breadcrumb transition*/
-.breadcrumb-enter-active,
-.breadcrumb-leave-active {
-  transition: all .5s;
-}
-.breadcrumb-enter,
-.breadcrumb-leave-active {
-  opacity: 0;
-  transform: translateX(20px);
+// 页面切换动画 - 滑动切换
+.page-fade {
+  &-outLeft {
+    &-leave-active, &-enter-active {
+      transition: all .28s linear;
+    }
+    &-enter {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    &-leave-to {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+  }
 }

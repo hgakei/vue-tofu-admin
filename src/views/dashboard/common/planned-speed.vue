@@ -7,8 +7,8 @@
         <el-progress :text-inside="true" :stroke-width="18" :percentage="90" color="#bae7ff"></el-progress>
       </div>
       <div class="progress-item">
-        <p class="item-title">全局功能</p>
-        <el-progress :text-inside="true" :stroke-width="18" :percentage="(4/8)*100" color="#91d5ff"></el-progress>
+        <p class="item-title">全局功能（国际化，全屏，动态面包屑，动态标签，）</p>
+        <el-progress :text-inside="true" :stroke-width="18" :percentage="(5/8)*100" color="#91d5ff"></el-progress>
       </div>
       <div class="progress-item">
         <p class="item-title">编辑器</p>
@@ -24,7 +24,7 @@
       </div>
       <div class="progress-item">
         <p class="item-title">其它</p>
-        <el-progress :text-inside="true" :stroke-width="18" :percentage="98" color="#096dd9"></el-progress>
+        <el-progress :text-inside="true" :stroke-width="18" :percentage="(0/6)*100" color="#096dd9"></el-progress>
       </div>
     </div>
   </div>

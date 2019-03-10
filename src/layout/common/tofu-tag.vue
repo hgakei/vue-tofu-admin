@@ -1,7 +1,7 @@
 <template>
   <div class="tofu-tag tofu-shadow--bottom" v-show="tagsList.length>0">
     <div @click.stop="$router.push({name:item.name})" class="tag-item" :class="{'act': isActive(item.name)}" v-for="(item,index) in tagsList" :key="index">
-      {{item.title}}
+      {{generateLang(item.title)}}
       <i class="iconfont iconicon_roundclose_fill" @click.stop="Del_tag(index)" title="关闭"></i>
     </div>
   </div>
@@ -9,6 +9,7 @@
 
 <script>
 import bus from '@/utils/bus.js'
+import { generateLang } from '@/utils/i18n'
 
 export default {
   name: 'tofu-tag',
@@ -23,6 +24,7 @@ export default {
     }
   },
   methods: {
+    generateLang,
     isActive (name) {
       return name === this.$route.name
     },

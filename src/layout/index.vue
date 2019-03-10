@@ -3,15 +3,17 @@
     <el-aside width="auto">
       <tofu-sidebar :collapse="collapse"></tofu-sidebar>
     </el-aside>
-    <el-container class="main-container" :class="{'collapse':collapse}">
+    <el-container class="tofu-el-container" :class="{'collapse':collapse}">
       <el-header height="50px">
         <tofu-header></tofu-header>
       </el-header>
       <tofu-tag></tofu-tag>
-      <el-main>
-        <keep-alive :include="tagsList">
-          <router-view/>
-        </keep-alive>
+      <el-main class="tofu-el-main">
+        <transition name="page-fade-outLeft" mode="out-in">
+          <keep-alive :include="tagsList">
+            <router-view/>
+          </keep-alive>
+        </transition>
       </el-main>
     </el-container>
   </el-container>
@@ -73,11 +75,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.main-container {
+.tofu-el-container {
   min-height: 100%;
   transition: margin-left .3s;
   margin-left: 220px;
   position: relative;
+  .tofu-el-main {
+    min-height: calc(100vh - (50px + 50px + 40px));
+    overflow: hidden;
+  }
 }
 .collapse {
   margin-left: 65px !important;

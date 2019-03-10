@@ -16,6 +16,8 @@
   height: 20px;
 }
 
+
+// 边框
 .tofu-border {
   border: 1px solid $clr-border;
   &--right {
@@ -34,12 +36,14 @@
   }
 }
 
+// 阴影
 .tofu-shadow {
   box-shadow:0px 0px 9px $clr-border;
   &--bottom {
     box-shadow:2px 2px 5px $clr-border;
   }
 }
+
 // 旋转
 .tofu-rotate {
   &_90 {
@@ -61,6 +65,18 @@
   color: $clr-theme-6;
   &--bg {
     background-color: $clr-theme-6;
+  }
+  &--hov-bg:hover {
+    background-color: $clr-theme-1;
+  }
+}
+.tofu-clr-gray {
+  color: $clr-gray;
+  &--bg {
+    background-color: $clr-gray;
+  }
+  &--hov-bg:hover {
+    background-color: $clr-gray;
   }
 }
 .tofu-clr-white {
