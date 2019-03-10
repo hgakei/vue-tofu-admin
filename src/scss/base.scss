@@ -69,6 +69,9 @@
   &--hov-bg:hover {
     background-color: $clr-theme-1;
   }
+  &--border {
+    border-color: $clr-theme-6;
+  }
 }
 .tofu-clr-gray {
   color: $clr-gray;

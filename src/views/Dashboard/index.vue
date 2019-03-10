@@ -28,7 +28,6 @@
 import statusBar from './common/status-bar'
 
 export default {
-  name: 'dashboard',
   components: {
     statusBar,
     chart1: resolve => require(['./common/chart1'], resolve),

@@ -1,6 +1,17 @@
 <template>
   <div class="tofu-tag tofu-shadow--bottom" v-show="tagsList.length>0">
-    <div @click.stop="$router.push({name:item.name})" class="tag-item" :class="{'act': isActive(item.name)}" v-for="(item,index) in tagsList" :key="index">
+    <div
+      @click.stop="$router.push({name:item.name})"
+      class="tag-item tofu-border"
+      :class="{
+        'act': isActive(item.name),
+        'tofu-clr-theme--bg': isActive(item.name),
+        'tofu-clr-theme--border': isActive(item.name)
+      }
+      "
+      v-for="(item,index) in tagsList"
+      :key="index"
+    >
       {{generateLang(item.title)}}
       <i class="iconfont iconicon_roundclose_fill" @click.stop="Del_tag(index)" title="关闭"></i>
     </div>
@@ -68,7 +79,6 @@ export default {
     height: 24px;
     line-height: 24px;
     margin-right: 4px;
-    border: 1px solid $clr-border;
     padding: 0 10px;
     box-sizing: border-box;
     cursor: pointer;
@@ -79,8 +89,6 @@ export default {
     }
     &.act {
       color: #fff;
-      background-color: $clr-theme-6;
-      border-color: $clr-theme-6;
       padding-right: 5px;
       .iconfont {
         display: inline;
