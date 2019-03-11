@@ -13,7 +13,7 @@ export default new Router({
     },
     {
       path: '/main',
-      component: () => import('@/layout/index.vue'),
+      component: resolve => require(['@/layout/index.vue'], resolve),
       meta: { title: 'route.main' },
       redirect: '/main/dashboard',
       children: [
