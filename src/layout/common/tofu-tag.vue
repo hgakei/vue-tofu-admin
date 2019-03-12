@@ -1,5 +1,5 @@
 <template>
-  <div class="tofu-tag tofu-shadow--bottom" v-show="tagsList.length>0">
+  <div class="tofu-tag tofu-shadow--bottom" v-show="TagList.length>0">
     <div
       @click.stop="$router.push({name:item.name})"
       class="tag-item tofu-border"
@@ -9,7 +9,7 @@
         'tofu-clr-theme--border': isActive(item.name)
       }
       "
-      v-for="(item,index) in tagsList"
+      v-for="(item,index) in TagList"
       :key="index"
     >
       {{generateLang(item.title)}}
@@ -19,51 +19,26 @@
 </template>
 
 <script>
-import bus from '@/utils/bus.js'
 import { generateLang } from '@/utils/i18n'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'tofu-tag',
-  data () {
-    return {
-      tagsList: []
-    }
-  },
-  watch: {
-    $route (newValue) {
-      this.Set_tags(newValue)
-    }
+  computed: {
+    ...mapGetters([
+      'TagList'
+    ])
   },
   methods: {
     generateLang,
     isActive (name) {
       return name === this.$route.name
     },
-    // 关闭单个标签
     Del_tag (index) {
-      this.tagsList.splice(index, 1)
-      const nextItem = this.tagsList[this.tagsList.length - 1]
+      this.TagList.splice(index, 1)
+      const nextItem = this.TagList[this.TagList.length - 1]
       nextItem && this.$router.push(nextItem.path)
-    },
-    Set_tags (route) {
-      const isExist = this.tagsList.some(item => {
-        return item.path === route.fullPath
-      })
-      if (!isExist) {
-        if (this.tagsList.length >= 8) {
-          this.tagsList.shift()
-        }
-        this.tagsList.push({
-          title: route.meta.title,
-          path: route.fullPath,
-          name: route.name
-        })
-      }
-      bus.$emit('tags', this.tagsList)
     }
-  },
-  created () {
-    this.Set_tags(this.$route)
   }
 }
 </script>

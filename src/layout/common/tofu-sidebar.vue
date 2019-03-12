@@ -16,29 +16,29 @@
         </a>
       </el-menu-item>
       <template v-for="item in menus">
-        <template v-if="item.subs">
-          <el-submenu :index="item.index" :key="item.index" :show-timeout="Timeout" :hide-timeout="Timeout">
+        <template v-if="item.children">
+          <el-submenu :index="item.path" :key="item.path" :show-timeout="Timeout" :hide-timeout="Timeout">
             <template slot="title">
-              <i class="iconfont" :class="item.icon"></i>
-              <span slot="title">{{ generateLang(item.title) }}</span>
+              <i class="iconfont" :class="item.meta.icon"></i>
+              <span slot="title">{{ generateLang(item.meta.title) }}</span>
             </template>
-            <template v-for="subItem in item.subs">
-              <el-submenu v-if="subItem.subs" :index="subItem.index" :key="subItem.index" :show-timeout="Timeout" :hide-timeout="Timeout">
-                <template slot="title">{{ generateLang(subItem.title) }}</template>
+            <template v-for="subItem in item.children">
+              <el-submenu v-if="subItem.children" :index="subItem.path" :key="subItem.path" :show-timeout="Timeout" :hide-timeout="Timeout">
+                <template slot="title">{{ generateLang(subItem.meta.title) }}</template>
                 <el-menu-item
-                  v-for="(threeItem,i) in subItem.subs"
+                  v-for="(threeItem,i) in subItem.children"
                   :key="i"
-                  :index="threeItem.index"
-                >{{ generateLang(threeItem.title) }}</el-menu-item>
+                  :index="threeItem.path"
+                >{{ generateLang(threeItem.meta.title) }}</el-menu-item>
               </el-submenu>
-              <el-menu-item v-else :index="subItem.index" :key="subItem.index">{{ generateLang(subItem.title) }}</el-menu-item>
+              <el-menu-item v-else :index="subItem.path" :key="subItem.path">{{ generateLang(subItem.meta.title) }}</el-menu-item>
             </template>
           </el-submenu>
         </template>
         <template v-else>
-          <el-menu-item :index="item.index" :key="item.index">
-            <i class="iconfont" :class="item.icon"></i>
-            <span slot="title">{{ generateLang(item.title) }}</span>
+          <el-menu-item :index="item.path" :key="item.path">
+            <i class="iconfont" :class="item.meta.icon"></i>
+            <span slot="title">{{ generateLang(item.meta.title) }}</span>
           </el-menu-item>
         </template>
       </template>
@@ -48,6 +48,7 @@
 
 <script>
 import { generateLang } from '@/utils/i18n'
+import MainRouter from '@/router/MainRouter'
 
 export default {
   name: 'tofu-sidebar',
@@ -55,74 +56,36 @@ export default {
   data () {
     return {
       Timeout: 150,
-      menus: [
-        {
-          icon: 'iconicon_work_fill',
-          index: 'dashboard',
-          title: 'route.dashboard'
-        },
-        {
-          icon: 'iconicon_memo',
-          index: 'driver',
-          title: 'route.driver'
-        },
-        {
-          icon: 'iconword',
-          index: 'article',
-          title: 'route.article',
-          subs: [
-            {
-              index: 'article-list',
-              title: 'route.articleList'
-            },
-            {
-              index: 'article-create',
-              title: 'route.articleCreate'
-            }
-          ]
-        },
-        {
-          icon: 'iconexcel',
-          index: 'excel',
-          title: 'route.excel',
-          subs: [
-            {
-              index: 'excel-export',
-              title: 'route.excelImport'
-            },
-            {
-              index: 'excel-import',
-              title: 'route.excelExport'
-            }
-          ]
-        },
-        {
-          icon: 'iconpdf',
-          index: 'pdf',
-          title: 'route.pdf'
-        },
-        {
-          icon: 'iconsvgmoban12',
-          index: 'permission',
-          title: 'route.permission',
-          subs: [
-            {
-              index: 'permission-create',
-              title: 'route.permissionCreate'
-            }
-          ]
-        }
-      ]
+      menus: []
     }
   },
   computed: {
     onRoutes () {
-      return this.$route.name
+      return this.$route.path
     }
   },
   methods: {
-    generateLang
-    // ...
+    generateLang,
+    make_menu () {
+      MainRouter.map(main => {
+        main.children.map((ring1, i1) => {
+          if (ring1.meta.menu) {
+            ring1.children && (ring1.children = this.is_menu(ring1.children))
+            this.menus.push(ring1)
+          }
+        })
+      })
+    },
+    is_menu (children) {
+      let arr = []
+      children.map(item => {
+        item.meta.menu && arr.push(item)
+      })
+      return arr
+    }
+  },
+  created () {
+    this.make_menu()
   }
 }
 </script>

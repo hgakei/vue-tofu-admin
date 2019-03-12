@@ -1,7 +1,7 @@
 <template>
   <div class="tofu-header tofu-border--bottom">
     <div class="lt">
-      <div class="tofu-sidebar-btn tofu-clr-theme--hov-bg" @click="On_toggle_sidebar()" key="close">
+      <div class="tofu-sidebar-btn tofu-clr-theme--hov-bg" @click="_SET_COLLAPSE_()" key="close">
         <i class="iconfont iconzhankai1" :class="collapse?'':'tofu-rotate_-180'"></i>
       </div>
     </div>
@@ -9,7 +9,7 @@
       <!-- 面包屑 -->
       <el-breadcrumb separator="/">
         <transition-group name="page-fade-outLeft" mode="in-out">
-          <el-breadcrumb-item v-for="item in breadcrumbList" :key="item.path" :to="{ path: item.path }">
+          <el-breadcrumb-item v-for="item in BreadcrumbList" :key="item.path" :to="{ path: item.path }">
             {{generateLang(item.label)}}
           </el-breadcrumb-item>
         </transition-group>
@@ -17,9 +17,7 @@
     </div>
     <div class="rt">
       <div class="item tofu-clr-theme--hov-bg">
-        <el-tooltip effect="dark" :content="fullscreen ? $t('tips.cancelFullScreen') : $t('tips.fullScreen')" placement="bottom">
-          <i class="iconfont iconquanping" @click="On_handleFullScreen()"></i>
-        </el-tooltip>
+        <item-fullscreen></item-fullscreen>
       </div>
       <div class="item tofu-clr-theme--hov-bg">
         <item-lang></item-lang>
@@ -48,60 +46,37 @@
 </template>
 
 <script>
-import bus from '@/utils/bus.js'
 import ItemLang from './item-lang'
+import itemFullscreen from './item-fullscreen'
 import { generateLang } from '@/utils/i18n'
+import { mapGetters, mapMutations } from 'vuex'
 
 export default {
   name: 'tofu-header',
   data () {
     return {
       collapse: false,
-      fullscreen: false,
       theme: '#13c2c2'
     }
   },
   computed: {
-    breadcrumbList () {
-      return bus.breadcrumbList
-    }
+    ...mapGetters([
+      'BreadcrumbList'
+    ])
   },
   components: {
-    ItemLang
+    ItemLang,
+    itemFullscreen
   },
   methods: {
     generateLang,
-    On_toggle_sidebar () {
+    _SET_COLLAPSE_ () {
       this.collapse = !this.collapse
-      bus.$emit('toggle-sidebar', this.collapse)
+      this.SET_COLLAPSE(this.collapse)
     },
-    // 全屏事件
-    On_handleFullScreen () {
-      let element = document.documentElement
-      if (this.fullscreen) {
-        if (document.exitFullscreen) {
-          document.exitFullscreen()
-        } else if (document.webkitCancelFullScreen) {
-          document.webkitCancelFullScreen()
-        } else if (document.mozCancelFullScreen) {
-          document.mozCancelFullScreen()
-        } else if (document.msExitFullscreen) {
-          document.msExitFullscreen()
-        }
-      } else {
-        if (element.requestFullscreen) {
-          element.requestFullscreen()
-        } else if (element.webkitRequestFullScreen) {
-          element.webkitRequestFullScreen()
-        } else if (element.mozRequestFullScreen) {
-          element.mozRequestFullScreen()
-        } else if (element.msRequestFullscreen) {
-          // IE11
-          element.msRequestFullscreen()
-        }
-      }
-      this.fullscreen = !this.fullscreen
-    }
+    ...mapMutations([
+      'SET_COLLAPSE'
+    ])
   }
 }
 </script>

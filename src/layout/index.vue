@@ -1,16 +1,16 @@
 <template>
   <el-container>
     <el-aside width="auto">
-      <tofu-sidebar :collapse="collapse"></tofu-sidebar>
+      <tofu-sidebar :collapse="Collapse"></tofu-sidebar>
     </el-aside>
-    <el-container class="tofu-el-container" :class="{'collapse':collapse}">
+    <el-container class="tofu-el-container" :class="{'collapse':Collapse}">
       <el-header height="50px">
         <tofu-header></tofu-header>
       </el-header>
       <tofu-tag></tofu-tag>
       <el-main class="tofu-el-main">
         <transition name="page-fade-outLeft" mode="out-in">
-          <keep-alive :include="tagsList">
+          <keep-alive :include="KeepAliveList">
             <router-view/>
           </keep-alive>
         </transition>
@@ -23,15 +23,22 @@
 import tofuHeader from './common/tofu-header'
 import tofuSidebar from './common/tofu-sidebar'
 import tofuTag from './common/tofu-tag'
-import bus from '@/utils/bus.js'
+import { mapGetters, mapMutations } from 'vuex'
 
 export default {
   name: 'layout',
-  data () {
-    return {
-      collapse: false,
-      tagsList: []
-    }
+  computed: {
+    KeepAliveList () {
+      let arr = []
+      for (let i = 0, len = this.TagList.length; i < len; i++) {
+        this.TagList[i].name && arr.push(this.TagList[i].name)
+      }
+      return arr
+    },
+    ...mapGetters([
+      'Collapse',
+      'TagList'
+    ])
   },
   components: {
     tofuHeader,
@@ -39,37 +46,44 @@ export default {
     tofuTag
   },
   methods: {
-    Get_breadcrumbList () {
+    _SET_BREAD_CRUMB_LIST_ () {
       const breadcrumbList = []
       this.$route.matched.map(item => {
         breadcrumbList.push({
           label: item.meta.title,
-          path: item.path || ''
+          path: item.meta.hideMic ? '' : (item.path || '')
         })
       })
-      bus.Set_breadcrumbList(breadcrumbList)
-    }
+      this.SET_BREAD_CRUMB_LIST(breadcrumbList)
+    },
+    _SET_TAG_LIST_ (route) {
+      const isExist = this.TagList.some(item => {
+        return item.path === route.fullPath
+      })
+      if (!isExist) {
+        if (this.TagList.length >= 8) {
+          this.TagList.shift()
+        }
+        this.TagList.push({
+          title: route.meta.title,
+          path: route.fullPath,
+          name: route.name
+        })
+      }
+    },
+    ...mapMutations([
+      'SET_BREAD_CRUMB_LIST'
+    ])
   },
   watch: {
-    '$route' () {
-      this.Get_breadcrumbList()
+    '$route' (NewRoute) {
+      this._SET_BREAD_CRUMB_LIST_()
+      this._SET_TAG_LIST_(NewRoute)
     }
   },
   created () {
-    this.Get_breadcrumbList()
-  },
-  mounted () {
-    bus.$on('toggle-sidebar', collapse => {
-      this.collapse = collapse
-    })
-    // 只有在标签页列表里的页面才使用keep-alive，即关闭标签之后就不保存到内存中了。
-    bus.$on('tags', msg => {
-      let arr = []
-      for (let i = 0, len = msg.length; i < len; i++) {
-        msg[i].name && arr.push(msg[i].name)
-      }
-      this.tagsList = arr
-    })
+    this._SET_BREAD_CRUMB_LIST_()
+    this._SET_TAG_LIST_(this.$route)
   }
 }
 </script>
