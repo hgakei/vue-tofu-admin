@@ -6,7 +6,8 @@
       :class="{
         'act': isActive(item.name),
         'tofu-clr-theme--bg': isActive(item.name),
-        'tofu-clr-theme--border': isActive(item.name)
+        'tofu-clr-theme--border': isActive(item.name),
+        'tofu-clr-theme--hov-bg': !isActive(item.name)
       }
       "
       v-for="(item,index) in TagList"

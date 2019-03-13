@@ -94,8 +94,9 @@ export default {
   transition: margin-left .3s;
   margin-left: 220px;
   position: relative;
+  background-color: #fff;
   .tofu-el-main {
-    min-height: calc(100vh - (50px + 50px + 40px));
+    min-height: calc(100vh - (50px + 32px));
     overflow: hidden;
   }
 }

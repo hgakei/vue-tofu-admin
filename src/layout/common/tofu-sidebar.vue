@@ -67,13 +67,11 @@ export default {
   methods: {
     generateLang,
     make_menu () {
-      MainRouter.map(main => {
-        main.children.map((ring1, i1) => {
-          if (ring1.meta.menu) {
-            ring1.children && (ring1.children = this.is_menu(ring1.children))
-            this.menus.push(ring1)
-          }
-        })
+      MainRouter.children.map((ring1, i1) => {
+        if (ring1.meta.menu) {
+          ring1.children && (ring1.children = this.is_menu(ring1.children))
+          this.menus.push(ring1)
+        }
       })
     },
     is_menu (children) {
@@ -99,6 +97,7 @@ export default {
   left: 0;
   bottom: 0;
   overflow-y: scroll;
+  z-index: 1;
   &::-webkit-scrollbar {
     width: 0;
   }

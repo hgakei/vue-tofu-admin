@@ -1,0 +1,12 @@
+@mixin clr ($clr, $bg, $hov-bg, $bor) {
+  color: $clr;
+  &--bg {
+    background-color: $bg;
+  }
+  &--hov-bg:hover {
+    background-color: $hov-bg;
+  }
+  &--border {
+    border-color: $bor;
+  }
+}

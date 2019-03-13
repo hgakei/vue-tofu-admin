@@ -62,59 +62,26 @@
 
 // 颜色
 .tofu-clr-theme {
-  color: $clr-theme-6;
-  &--bg {
-    background-color: $clr-theme-6;
-  }
-  &--hov-bg:hover {
-    background-color: $clr-theme-1;
-  }
-  &--border {
-    border-color: $clr-theme-6;
-  }
+  @include clr ($clr-theme-6, $clr-theme-6, $clr-theme-1, $clr-theme-6);
 }
 .tofu-clr-gray {
-  color: $clr-gray;
-  &--bg {
-    background-color: $clr-gray;
-  }
-  &--hov-bg:hover {
-    background-color: $clr-gray;
-  }
+  @include clr ($clr-gray, $clr-gray, $clr-gray, $clr-gray);
 }
 .tofu-clr-white {
-  color: $clr-white;
-  &--bg {
-    background-color: $clr-white;
-  }
+  @include clr ($clr-white, $clr-white, $clr-white, $clr-white);
 }
 .tofu-clr-black {
-  color: $clr-black;
-  &--bg {
-    background-color: $clr-black;
-  }
+  @include clr ($clr-black, $clr-black, $clr-black, $clr-black);
 }
 .tofu-clr-blue {
-  color: $clr-blue;
-  &--bg {
-    background-color: $clr-blue;
-  }
+  @include clr ($clr-blue, $clr-blue, $clr-blue, $clr-blue);
 }
 .tofu-clr-org {
-  color: $clr-org;
-  &--bg {
-    background-color: $clr-org;
-  }
+  @include clr ($clr-org, $clr-org, $clr-org, $clr-org);
 }
 .tofu-clr-red {
-  color: $clr-red;
-  &--bg {
-    background-color: $clr-red;
-  }
+  @include clr ($clr-red, $clr-red, $clr-red, $clr-red);
 }
 .tofu-clr-green {
-  color: $clr-green;
-  &--bg {
-    background-color: $clr-green;
-  }
+  @include clr ($clr-green, $clr-green, $clr-green, $clr-green);
 }
