@@ -16,7 +16,7 @@ export default {
   route: {
     main: 'Main',
     dashboard: 'Dashboard',
-    driver: 'Driver',
+    guide: 'Guide',
     article: 'Article',
     articleList: 'Article List',
     articleCreate: 'Article Create',
@@ -26,5 +26,16 @@ export default {
     pdf: 'PDF',
     permission: 'Permission',
     permissionCreate: 'Permission Create'
+  },
+  page: {
+    guide: {
+      startGuide: 'startGuide'
+    }
+  },
+  info: {
+    '1-1': {
+      title: 'Breadcrumbs',
+      description: 'Make the structure of the website clearer; improve the user experience; guide the transfer of weights'
+    }
   }
 }

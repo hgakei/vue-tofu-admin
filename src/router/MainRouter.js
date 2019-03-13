@@ -18,11 +18,11 @@ export default {
       }
     },
     {
-      path: '/main/driver',
-      name: 'driver',
-      component: resolve => require(['@/views/driver/index.vue'], resolve),
+      path: '/main/guide',
+      name: 'guide',
+      component: resolve => require(['@/views/guide/index.vue'], resolve),
       meta: {
-        title: 'route.driver',
+        title: 'route.guide',
         icon: 'iconicon_memo',
         menu: true
       }

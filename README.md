@@ -46,3 +46,7 @@ vue-tofu-admin 是专门打造的中后台集成方案，是 vue 和 element-ui 
 - Markdown to Html
 - G2 图表  ---------------------------------------------  √
 ```
+
+### 第三方库文档
+
+- [driver.js](https://github.com/kamranahmedse/driver.js)，用户指引

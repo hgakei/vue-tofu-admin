@@ -16,7 +16,7 @@ export default {
   route: {
     main: '首页',
     dashboard: '数据中心',
-    driver: '用户引导',
+    guide: '用户引导',
     article: '文章功能',
     articleList: '文章列表',
     articleCreate: '创建文章',
@@ -26,5 +26,16 @@ export default {
     pdf: 'PDF功能',
     permission: '权限功能',
     permissionCreate: '设置权限'
+  },
+  page: {
+    guide: {
+      startGuide: '开启指引'
+    }
+  },
+  info: {
+    '1-1': {
+      title: '面包屑导航',
+      description: '让网站结构更加清晰；提高用户体验；引导权重的传递'
+    }
   }
 }

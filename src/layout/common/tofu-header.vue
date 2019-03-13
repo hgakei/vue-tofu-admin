@@ -5,7 +5,7 @@
         <i class="iconfont iconzhankai1 tofu-clr-theme" :class="collapse?'':'tofu-rotate_-180'"></i>
       </div>
     </div>
-    <div class="ct">
+    <div class="ct" data-info="1-1">
       <!-- 面包屑 -->
       <el-breadcrumb separator="/">
         <transition-group name="page-fade-outLeft" mode="in-out">
