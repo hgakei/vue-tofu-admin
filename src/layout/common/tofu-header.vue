@@ -1,7 +1,7 @@
 <template>
   <div class="tofu-header tofu-border--bottom">
     <div class="lt">
-      <div class="tofu-sidebar-btn tofu-clr-theme--hov-bg" @click="_SET_COLLAPSE_()" key="close">
+      <div class="tofu-sidebar-btn tofu-clr-theme--hov-bg" @click="_SET_COLLAPSE_()" key="close" data-info="1-0">
         <i class="iconfont iconzhankai1 tofu-clr-theme" :class="collapse?'':'tofu-rotate_-180'"></i>
       </div>
     </div>
@@ -16,18 +16,18 @@
       </el-breadcrumb>
     </div>
     <div class="rt">
-      <div class="item tofu-clr-theme--hov-bg">
+      <div class="item tofu-clr-theme--hov-bg" data-info="1-2">
         <item-fullscreen></item-fullscreen>
       </div>
-      <div class="item tofu-clr-theme--hov-bg">
+      <div class="item tofu-clr-theme--hov-bg" data-info="1-3">
         <item-lang></item-lang>
       </div>
-      <div class="item tofu-clr-theme--hov-bg">
+      <div class="item tofu-clr-theme--hov-bg" data-info="1-4">
         <el-tooltip effect="dark" :content="$t('tips.theme')" placement="bottom">
           <el-color-picker v-model="theme" size="small"></el-color-picker>
         </el-tooltip>
       </div>
-      <div class="item tofu-clr-theme--hov-bg">
+      <div class="item tofu-clr-theme--hov-bg" data-info="1-5">
         <el-dropdown>
           <div class="avatar-wrap">
             <div class="avatar">

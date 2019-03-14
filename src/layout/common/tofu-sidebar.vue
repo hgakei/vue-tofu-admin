@@ -101,10 +101,8 @@ export default {
   &::-webkit-scrollbar {
     width: 0;
   }
-  & > ul {
-    height: 100%;
-  }
   .tofu-sidebar {
+    height: 100%;
     // 展开状态
     &:not(.el-menu--collapse) {
       width: 220px;

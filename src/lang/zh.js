@@ -29,7 +29,7 @@ export default {
   },
   page: {
     guide: {
-      startGuide: '开启指引'
+      startGuide: '开启引导'
     }
   },
   info: {

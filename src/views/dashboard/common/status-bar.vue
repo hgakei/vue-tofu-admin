@@ -3,11 +3,11 @@
     <el-row justify="space-between" type="flex" :gutter="20">
       <el-col :span="6">
         <div class="el-col-inner tofu-border-radius--8 tofu-border tofu-shadow">
-          <div class="lt tofu-clr-blue--bg">
+          <div class="lt tofu-clr-theme--bg">
             <i class="iconfont iconcangku_zhongzhuanchuzhan tofu-clr-white"></i>
           </div>
           <div class="rt">
-            <p class="number tofu-clr-blue">999</p>
+            <p class="number tofu-clr-theme">999</p>
             <p class="text">用户访问量</p>
           </div>
         </div>
