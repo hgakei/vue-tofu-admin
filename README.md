@@ -50,3 +50,4 @@ vue-tofu-admin 是专门打造的中后台集成方案，是 vue 和 element-ui 
 ### 第三方库文档
 
 - [driver.js](https://github.com/kamranahmedse/driver.js)，用户指引
+- [vue-quill-editor](https://github.com/surmon-china/vue-quill-editor)，富文本编辑器

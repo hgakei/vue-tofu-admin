@@ -1,6 +1,8 @@
 <template>
   <el-tooltip effect="dark" :content="fullscreen ? $t('tips.cancelFullScreen') : $t('tips.fullScreen')" placement="bottom">
-    <i class="iconfont iconquanping" @click="On_handleFullScreen()"></i>
+    <div class="tofu-flex--center">
+      <i class="iconfont iconquanping" @click="On_handleFullScreen()"></i>
+    </div>
   </el-tooltip>
 </template>
 

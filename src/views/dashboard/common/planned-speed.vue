@@ -7,12 +7,12 @@
         <el-progress :text-inside="true" :stroke-width="18" :percentage="90" color="#bae7ff"></el-progress>
       </div>
       <div class="progress-item">
-        <p class="item-title">全局功能（国际化，全屏，动态面包屑，动态标签，）</p>
-        <el-progress :text-inside="true" :stroke-width="18" :percentage="(5/8)*100" color="#91d5ff"></el-progress>
+        <p class="item-title">全局功能（国际化，全屏，动态面包屑，动态标签，用户引导）</p>
+        <el-progress :text-inside="true" :stroke-width="18" :percentage="(6/8)*100" color="#91d5ff"></el-progress>
       </div>
       <div class="progress-item">
-        <p class="item-title">编辑器</p>
-        <el-progress :text-inside="true" :stroke-width="18" :percentage="(0/2)*100" color="#69c0ff"></el-progress>
+        <p class="item-title">编辑器（富文本，Markdown）</p>
+        <el-progress :text-inside="true" :stroke-width="18" :percentage="(1/2)*100" color="#69c0ff"></el-progress>
       </div>
       <div class="progress-item">
         <p class="item-title">Excel</p>

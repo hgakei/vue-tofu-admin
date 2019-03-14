@@ -23,9 +23,7 @@
         <item-lang></item-lang>
       </div>
       <div class="item tofu-clr-theme--hov-bg" data-info="1-4">
-        <el-tooltip effect="dark" :content="$t('tips.theme')" placement="bottom">
-          <el-color-picker v-model="theme" size="small"></el-color-picker>
-        </el-tooltip>
+        <item-theme></item-theme>
       </div>
       <div class="item tofu-clr-theme--hov-bg" data-info="1-5">
         <el-dropdown>
@@ -48,6 +46,7 @@
 <script>
 import ItemLang from './item-lang'
 import itemFullscreen from './item-fullscreen'
+import itemTheme from './item-theme'
 import { generateLang } from '@/utils/i18n'
 import { mapGetters, mapMutations } from 'vuex'
 
@@ -55,8 +54,7 @@ export default {
   name: 'tofu-header',
   data () {
     return {
-      collapse: false,
-      theme: '#13c2c2'
+      collapse: false
     }
   },
   computed: {
@@ -66,7 +64,8 @@ export default {
   },
   components: {
     ItemLang,
-    itemFullscreen
+    itemFullscreen,
+    itemTheme
   },
   methods: {
     generateLang,

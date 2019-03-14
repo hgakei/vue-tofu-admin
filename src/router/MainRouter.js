@@ -38,27 +38,27 @@ export default {
       },
       children: [
         {
-          path: '/main/article/article-list',
-          name: 'article-list',
-          component: resolve => require(['@/views/article/article-list.vue'], resolve),
+          path: '/main/article/editor',
+          name: 'editor',
+          component: resolve => require(['@/views/article/editor.vue'], resolve),
           meta: {
-            title: 'route.articleList',
+            title: 'route.editor',
             menu: true
           }
         },
         {
-          path: '/main/article-create',
-          name: 'article-create',
-          component: resolve => require(['@/views/article/article-create.vue'], resolve),
+          path: '/main/article/markdown',
+          name: 'markdown',
+          component: resolve => require(['@/views/article/markdown.vue'], resolve),
           meta: {
-            title: 'route.articleCreate',
+            title: 'route.markdown',
             menu: true
           }
         },
         {
-          path: '/main/article-dt',
-          name: 'article-dt',
-          component: resolve => require(['@/views/article/article-list.vue'], resolve),
+          path: '/main/editor',
+          name: 'editor',
+          component: resolve => require(['@/views/article/editor.vue'], resolve),
           meta: {
             title: 'route.articleList',
             menu: false

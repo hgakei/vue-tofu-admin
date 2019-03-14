@@ -16,6 +16,21 @@
   height: 20px;
 }
 
+// flex 布局
+.tofu-flex {
+  &--center {
+    height: 100%;
+    width: 100%;
+    @include flex(center, center);
+  }
+}
+
+// padding
+.tofu-padding {
+  &--top-20 {
+    padding-top: 20px;
+  }
+}
 
 // 边框
 .tofu-border {

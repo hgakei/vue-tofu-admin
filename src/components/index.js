@@ -1,7 +1,11 @@
 import Content from './Content/index.vue'
+import RichText from './RichText/index.vue'
+import { DialogApi, Dialog } from './Dialog/index.js'
 
 const components = [
-  Content
+  Content,
+  Dialog,
+  RichText
 ]
 
 const install = function (Vue) {
@@ -9,6 +13,9 @@ const install = function (Vue) {
   components.map(component => {
     Vue.component(component.name, component)
   })
+
+  // prototype
+  Vue.prototype.$dialog = DialogApi
 }
 
 if (typeof window !== 'undefined' && window.Vue) {
