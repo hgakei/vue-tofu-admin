@@ -3,7 +3,7 @@
     <tofu-content>文章功能的核心是富文本编辑器，编辑器分为富文本和Markdown两种类型</tofu-content>
     <tofu-editor :content.sync="content"></tofu-editor>
     <div class="tofu-padding--top-20">
-      <el-button icon="el-icon-view" type="primary" @click.stop="preview" size="small">文章预览</el-button>
+      <el-button icon="el-icon-view" type="primary" @click.stop="preview" size="medium">文章预览</el-button>
     </div>
     <tofu-dialog
       :visible.sync="visible"

@@ -1,11 +1,13 @@
 import Content from './Content/index.vue'
 import RichText from './RichText/index.vue'
+import Scrollbar from './Scrollbar/index.vue'
 import { DialogApi, Dialog } from './Dialog/index.js'
 
 const components = [
   Content,
   Dialog,
-  RichText
+  RichText,
+  Scrollbar
 ]
 
 const install = function (Vue) {

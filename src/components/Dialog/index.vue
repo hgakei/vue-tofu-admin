@@ -7,10 +7,12 @@
     :width="width"
     @closed="closed"
   >
-    <div class="slot-wrap" v-html="content" v-if="content"></div>
-    <div class="slot-wrap" v-if="$slots.default">
-      <slot></slot>
-    </div>
+    <tofu-scrollbar>
+      <div class="slot-wrap" v-html="content" v-if="content"></div>
+      <div class="slot-wrap" v-if="$slots.default">
+        <slot></slot>
+      </div>
+    </tofu-scrollbar>
     <div slot="footer" style="padding-top: 9px">
       <template v-if="$slots.footer">
         <slot name="footer"></slot>

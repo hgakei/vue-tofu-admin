@@ -1,21 +1,21 @@
 <template>
   <div class="tofu-editor">
     <quill-editor
-      ref="newEditor"
       :options="newOption"
       v-model="editorContent"
       @change="editorChange"
     >
       <div id="toolbar" slot="toolbar">
+        <!-- Add a bold button -->
         <button class="ql-bold" title="加粗">Bold</button>
         <button class="ql-italic" title="斜体">Italic</button>
         <button class="ql-underline" title="下划线">underline</button>
         <button class="ql-strike" title="删除线">strike</button>
         <button class="ql-blockquote" title="引用"></button>
-
+        <!--Add list -->
         <button class="ql-list" value="ordered" title="有序列表"></button>
         <button class="ql-list" value="bullet" title="无序列表"></button>
-
+        <!-- Add font size dropdown -->
         <select class="ql-header" title="段落格式">
           <option selected>段落</option>
           <option value="1">标题1</option>
@@ -57,27 +57,14 @@
 import { quillEditor, Quill } from 'vue-quill-editor'
 import ImageResize from 'quill-image-resize-module'
 import { ImageExtend, QuillWatch } from 'quill-image-extend-module'
-Quill.register('modules/imageResize', ImageResize)
+!Quill.imports['modules/imageResize'] && Quill.register('modules/imageResize', ImageResize) // Register only if not exists - 仅在不存在时注册
 Quill.register('modules/ImageExtend', ImageExtend)
-
-// 自定义字体大小
-let Size = Quill.import('attributors/style/size')
+// 自定义模块
+const Size = Quill.import('attributors/style/size')
+const Font = Quill.import('formats/font')
 Size.whitelist = ['12px', '14px', '16px', '18px', '20px', '22px', '24px']
+Font.whitelist = ['SimSun', 'SimHei', 'Microsoft-YaHei', 'KaiTi', 'FangSong', 'Arial', 'Times-New-Roman', 'sans-serif'] // 将字体加入到白名单
 Quill.register(Size, true)
-
-// 自定义字体类型
-var fonts = [
-  'SimSun',
-  'SimHei',
-  'Microsoft-YaHei',
-  'KaiTi',
-  'FangSong',
-  'Arial',
-  'Times-New-Roman',
-  'sans-serif'
-]
-var Font = Quill.import('formats/font')
-Font.whitelist = fonts // 将字体加入到白名单
 Quill.register(Font, true)
 
 let VM = null
@@ -177,7 +164,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 // editor style
 @import '~quill/dist/quill.core.css';
 @import '~quill/dist/quill.snow.css';

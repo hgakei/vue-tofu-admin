@@ -54,15 +54,6 @@ export default {
             title: 'route.markdown',
             menu: true
           }
-        },
-        {
-          path: '/main/editor',
-          name: 'editor',
-          component: resolve => require(['@/views/article/editor.vue'], resolve),
-          meta: {
-            title: 'route.articleList',
-            menu: false
-          }
         }
       ]
     },
