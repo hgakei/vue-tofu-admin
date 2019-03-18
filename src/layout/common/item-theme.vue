@@ -1,9 +1,9 @@
 <template>
-  <el-tooltip effect="dark" :content="$t('tips.theme')" placement="bottom">
+  <tofu-tooltip effect="dark" :content="$t('tips.theme')" placement="bottom">
     <div class="tofu-flex--center">
       <el-color-picker v-model="theme" size="small"></el-color-picker>
     </div>
-  </el-tooltip>
+  </tofu-tooltip>
 </template>
 
 <script>

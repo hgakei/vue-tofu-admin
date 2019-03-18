@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router/index'
 import store from './store/index'
-import Tofu from '@/components/index.js'
+import components from '@/components/index.js'
 
 // import 'normalize.css/normalize.css'
 import '@/scss/index.scss' // global css
@@ -12,7 +12,10 @@ import '@/scss/element-variables.scss'
 
 import i18n from './lang' // Internationalization
 
-Vue.use(Tofu)
+import VueTofuUI from 'vue-tofu-ui'
+
+Vue.use(components)
+Vue.use(VueTofuUI)
 Vue.use(ElementUI, {
   i18n: (key, value) => i18n.t(key, value)
 })
