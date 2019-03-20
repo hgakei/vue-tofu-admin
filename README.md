@@ -1,6 +1,6 @@
 ### 简介
 ------------------
-[vue-tofu-admin](https://hgakei.github.io/vue-tofu-admin/) 是专门打造的中后台集成方案，是 vue 和 element-ui 结合的最佳实践。
+[vue-tofu-admin](https://hgakei.github.io/vue-tofu-admin/dist) 是专门打造的中后台集成方案，是 vue 和 element-ui 结合的最佳实践。
 
 ### 功能
 ----------------
