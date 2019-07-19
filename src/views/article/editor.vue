@@ -34,6 +34,7 @@ export default {
   methods: {
     preview () {
       this.visible = true
+      console.log(this.content)
     }
   }
 }
