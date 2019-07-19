@@ -35,6 +35,7 @@ export default {
     preview () {
       this.visible = true
       console.log(this.content)
+      console.log(JSON.stringify(this.content))
     }
   }
 }
